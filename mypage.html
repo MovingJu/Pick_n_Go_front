@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My page</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF0E3;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity 1s ease-in, transform 1.3s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        h1 p {
+            margin: 0;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            flex: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper > div {
+            flex: 1;
+            background-color: #444;
+            width: 80%;
+            max-width: 80vh;
+            margin: 10px;
+            transition: flex 0.2s ease-out;
+            border-radius: 40px;
+            text-shadow: 0px 0px 5px #fff;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px 0px 5px #fff;
+        }
+
+        .text:hover {
+            box-shadow: 0px 0px 5px #000;
+            cursor: pointer;
+        }
+
+        .pig {
+            width: 60vw;
+            height: 60vw;
+            max-width: 30vh;
+            max-height: 30vh;
+            background-image: url(./imgs/pig.png);
+            background-size: 100% 100%;
+            z-index: -1;
+            margin: 0 auto;
+            flex: 2;
+            padding: 5vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="fade-in">
+            <div>
+                <img src="./imgs/icon.png" style="width: 8vh;">
+                <p>My Page</p>
+            </div>
+        </h1>
+        <div class="wrapper">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <div class="pig"></div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.photos > div > div').forEach((e, i) => {
+            e.style.backgroundImage = `url(./imgs/img${i+1}.png)`;
+            console.log(e);
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll(".fade-in");
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            });
+
+            elements.forEach(el => observer.observe(el));
+        });
+
+        const tourList = [
+            {
+                name: "모름",
+                geography: "부산 해운대",
+                description: "이거 마우스 올리면 이렇게 커짐 클릭하면 관광지 세부 페이지로 ㄱㄱ"
+            },
+            {
+                name: "광화문",
+                geography: "서울 종로",
+                description: "이거 마우스 올리면 이렇게 커짐 클릭하면 관광지 세부 페이지로 ㄱㄱ"
+            },
+            {
+                name: "롯데 월드타워",
+                geography: "서울 송파",
+                description: "이거 마우스 올리면 이렇게 커짐 클릭하면 관광지 세부 페이지로 ㄱㄱ"
+            },
+            {
+                name: "마린시티 호텔",
+                geography: "부산 해운대",
+                description: "이거 마우스 올리면 이렇게 커짐 클릭하면 관광지 세부 페이지로 ㄱㄱ"
+            },
+        ];
+
+        document.querySelectorAll('.wrapper > div').forEach((e) => {
+            e.addEventListener('mouseenter', () => {
+                tourListLoad()
+                e.innerHTML = `
+                <div></div>
+                <div></div>
+                `;
+                e.style.flex = '5';
+            });
+        });
+
+        tourListLoad = () => {
+            document.querySelectorAll('.wrapper > div').forEach((e, i) => {
+                e.style.flex = '1';
+                e.style.display = 'flex';
+                e.style.alignItems = 'center';
+                e.style.padding = '20px';
+                if (i<3) {
+                    e.style.backgroundImage = `url(./imgs/img${i+1}.png)`;
+                } else {
+                    e.style.backgroundImage = `url(./imgs/tourList${i+1}.png)`;
+                }
+                e.style.backgroundSize = '100%';
+                e.style.backgroundPosition = 'center';
+                e.innerHTML = `${tourList[i].name}, ${tourList[i].geography}`;
+            });
+        }
+        tourListLoad();
+    </script>
+</body>
+</html>
