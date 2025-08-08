@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";document.querySelectorAll(".social > div").forEach((e,t)=>{t==0&&e.addEventListener("click",()=>{const c="https://kauth.kakao.com/oauth/authorize?client_id=e8af967f22a2e98d8aa94bcfc421bcfa&redirect_uri=http://13.125.248.146:8080/kakao/code&response_type=code";location.href=c})});

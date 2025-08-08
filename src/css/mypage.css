@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    background-color: #FFF0E3;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateX(-35px);
+    transition: opacity 1s ease-in, transform 1.3s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+h1 p {
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper>div {
+    flex: 1;
+    background-color: #444;
+    width: 80%;
+    max-width: 80vh;
+    margin: 10px;
+    transition: flex 0.2s ease-out;
+    border-radius: 40px;
+    text-shadow: 0px 0px 5px #fff;
+    font-weight: bold;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px #fff;
+}
+
+.text:hover {
+    box-shadow: 0px 0px 5px #000;
+    cursor: pointer;
+}
+
+.pig {
+    width: 60vw;
+    height: 60vw;
+    max-width: 30vh;
+    max-height: 30vh;
+    background-image: url(./imgs/pig.png);
+    background-size: 100% 100%;
+    z-index: -1;
+    margin: 0 auto;
+    flex: 2;
+    padding: 5vh;
+}

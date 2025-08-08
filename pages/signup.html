@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/src/css/signup.css">
+</head>
+
+<body>
+    <div style="height: calc(100vh - 10vw); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <header>
+                <div class="back" onclick="location.href='./signin.html'"></div>
+                <img class="logo" src="/imgs/icon.png">
+            </header>
+            <div class="container">
+                <h2 style="text-align: center; margin-top: 0;">회원등록</h2>
+                <form action="">
+                    <input type="text" placeholder="Username" autocomplete="username">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password" autocomplete="new-password">
+                    <input type="password" placeholder="Confirm password" autocomplete="new-password">
+                    <button type="submit" class="register-btn">Register</button>
+                </form>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="line"></div>
+                    <div style="font-size: 12px; color: gray;">Or Register with</div>
+                    <div class="line"></div>
+                </div>
+                <div class="social">
+                    <div style="background-color: #FEE500;"><img style="width: 3vh; height: 3vh;" src="/imgs/kakao.svg"></div>
+                    <div style="background-color: #2DB400;"><img style="width: 3vh; height: 3vh;" src="/imgs/naver.svg"></div>
+                    <div><img style="width: 3vh; height: 3vh;" src="/imgs/google.webp"></div>
+                    <div style="background-color: #000;"><img style="width: 2.5vh; height: 2.5vh;" src="/imgs/apple.png"></div>
+                </div>
+            </div>
+        </div>
+        <div style="font-size: 14px; text-align: center; margin-bottom: 5vw;">Already have an account? <span style="font-weight: bold; color: rgb(0, 201, 201);" onclick="location.href = './signin.html'">Login Now</span></div>
+    </div>
+    <script type="module" src="/src/js/signup.js"></script>
+</body>
+
+</html>
