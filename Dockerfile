@@ -40,4 +40,5 @@ COPY --from=build /usr/src/app/dist ./dist
 
 EXPOSE 4173
 
+
 CMD npm run preview
