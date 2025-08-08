@@ -27,7 +27,7 @@ FROM base as deps
 # into this layer.
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-npm,target=/root/.npm \
+    --mount=type=cache,id=cache-${RAILWAY_SERVICE_ID}-npm,target=/root/.npm \
     npm ci --omit=dev
 
 ################################################################################
@@ -38,7 +38,7 @@ FROM deps as build
 # "devDependencies" to be installed to build. If you don't need this, remove this step.
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-npm,target=/root/.npm \
+    --mount=type=cache,id=cache-${RAILWAY_SERVICE_ID}-npm,target=/root/.npm \
     npm ci
 
 # Copy the rest of the source files into the image.
@@ -58,7 +58,7 @@ ENV NODE_ENV production
 USER node
 
 # Copy package.json so that package manager commands can be used.
-COPY package.json .
+COPY package.json package-lock.json ./
 
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.
