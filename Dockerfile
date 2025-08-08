@@ -19,7 +19,7 @@ FROM deps as build
 
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,id=pick-and-go-npm-cache,target=/root/.npm \
+    --mount=type=cache,target=/root/.npm \
     npm ci
 
 COPY . .
